@@ -1,3 +1,4 @@
+- categories = Category.all.pluck(:name, :id)
 = form_with(model: post, local: true) do |form|
   - if post.errors.any?
     .message.is-danger
@@ -22,7 +23,13 @@
     = form.label :location, class: "label"
     = form.text_field :location, class: "input"
   .field
+    = form.label :category, class: "label"
+    .select
+      = form.select :category_id, categories
+  .field
     = form.label "Add A Picture", class: "label"
-    = form.file_field :image
+    = form.file_field :image, accept: 'image/png,image/gif,image/jpeg'
   .actions
     = form.submit class: "button is-success"
+    -# %span.file.has-name.file-icon.file-cta
+    -#   %i.fa.fa-upload
