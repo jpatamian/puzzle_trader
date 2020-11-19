@@ -27,3 +27,4 @@ production:
   <<: *default
   database: puzzle_trader_production
   username: puzzle_trader
+  password: Framingham1!
