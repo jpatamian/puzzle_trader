@@ -1,0 +1,28 @@
+= form_with(model: post, local: true) do |form|
+  - if post.errors.any?
+    .message.is-danger
+      .message-header
+        %p
+          = pluralize(post.errors.count, "error")
+          prohibited this post from being saved:
+      .message-body
+        %ul
+          - post.errors.full_messages.each do |message|
+            %li= message
+  .field
+    = form.label :name, class: "label"
+    = form.text_field :name, class: "input"
+  .field
+    = form.label :price, class: "label"
+    = form.number_field :price, class: "input"
+  .field
+    = form.label :description, class: "label"
+    = form.text_field :description, class: "input"
+  .field
+    = form.label :location, class: "label"
+    = form.text_field :location, class: "input"
+  .field
+    = form.label "Add A Picture", class: "label"
+    = form.file_field :image
+  .actions
+    = form.submit class: "button is-success"

@@ -1,0 +1,16 @@
+%body
+  .columns.mt-6.is-centered
+    .column.is-one-quarter
+      %header.has-text-weight-bold
+        %p
+          = @post.name
+      %p.has-text-weight-bold Price:
+      %p= "$#{@post.price}"
+      %p.has-text-weight-bold Description:
+      %p= @post.description
+      %p.has-text-weight-bold Location:
+      %p= @post.location
+      %p.has-text-weight-bold Posted:
+      %p.italic= "#{time_ago_in_words(@post.created_at)} ago"
+    - if @post.image.attached?
+      %image{src: "#{(url_for(@post.image))}"}

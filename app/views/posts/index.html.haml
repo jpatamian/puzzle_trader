@@ -1,0 +1,26 @@
+%body
+  - content_for :title do
+    Puzzle Trader
+  .columns.mt-6.is-centered
+    - @posts.each do |post|
+      .column.is-one-quarter
+        .card
+          %header.card-header
+            %p.card-header-title
+              = post.name
+          .card-content
+            .content
+              %p.has-text-weight-bold Price:
+              %p= "$#{post.price}"
+              %p.has-text-weight-bold Description:
+              %p= post.description
+              %p.has-text-weight-bold Location:
+              %p= post.location
+              %p.has-text-weight-bold Posted At:
+              %p.italic= "#{time_ago_in_words(post.created_at)} ago"
+          .card-footer
+            = link_to 'View', post, class: "card-footer-item"
+            = link_to 'Edit', edit_post_path(post), class: "card-footer-item"
+            = link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-footer-item"
+  .columns.is-centered.mt-6
+    = link_to "View All Posts", archives_index_path, class: "button is-link is-outlined is-centered"

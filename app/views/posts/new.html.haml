@@ -1,0 +1,5 @@
+.mt-6{class: "columns.is-centered"}
+  .column.is-one-third
+    %h1.is-size-4.has-text-weight-bold.mb-6 Post Your Puzzle
+    = render 'form', post: @post
+    = link_to 'Back', posts_path

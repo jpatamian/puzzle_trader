@@ -1,0 +1,18 @@
+<div class="columns is-centered mt-6">
+  <div class="column is-half">
+    <% @posts.each do |day, posts| %>
+      <h3 class="is-size-4 has-text-weight-bold mb-4 has-text-centered">
+        Posts for <%= day %></h3>
+      <% posts.each do |post| %>
+        <%= link_to post_path(post) do %>
+          <div class="card-content">
+            <strong> <%= post.name %> </strong><br/>
+            Price: $ <%= post.price %><br/>
+            Description: <%= post.description %><br/>
+            Location: <%= post.location %><br/>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
